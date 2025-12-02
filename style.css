@@ -29,16 +29,31 @@ body {
     font-family: var(--font-body);
     overflow-x: hidden;
     line-height: 1.6;
+    
+    /* --- TECH BACKGROUND --- */
+    background-image: 
+        /* Dark overlay for readability */
+        linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.9)), 
+        /* Code/Computer Image */
+        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /* --- Utility Classes --- */
 .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    /* Enhanced Glassmorphism */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .text-gradient {
@@ -104,7 +119,7 @@ body {
     transform: translateX(-50%);
     top: 20px;
     z-index: 1000;
-    border-radius: 50px; /* Pill shape nav */
+    border-radius: 50px;
 }
 
 .logo {
@@ -137,7 +152,8 @@ body {
     justify-content: center;
     gap: 50px;
     padding: 0 10%;
-    background: radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.15) 0%, transparent 40%);
+    /* Subtle radial gradient behind hero for focus */
+    background: radial-gradient(circle at 50% 50%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
 }
 
 .hero-content { max-width: 600px; }
@@ -151,9 +167,18 @@ body {
     padding: 10px;
     transform: rotate(3deg);
     transition: transform 0.3s;
+    /* Neon Glow for Profile */
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.4);
 }
 .img-box:hover { transform: rotate(0deg); }
-.img-box img { width: 100%; max-width: 350px; border-radius: 10px; display: block; }
+.img-box img { 
+    width: 100%; 
+    max-width: 350px; 
+    height: 450px;
+    object-fit: cover; 
+    border-radius: 10px; 
+    display: block; 
+}
 
 /* --- About Section --- */
 .about-grid {
@@ -215,6 +240,79 @@ body {
 }
 
 @keyframes load { from { width: 0; } }
+
+/* --- LeetCode Section --- */
+.leetcode-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.stat-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.stat-card span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Circular Progress Bar */
+.circle-progress {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.circle-progress svg {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+}
+
+.circle-progress circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #333;
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.circle-progress circle:nth-child(2) {
+    stroke: var(--accent-color);
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transition: stroke-dashoffset 2s ease;
+}
+
+.circle-progress .number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
 
 /* --- Projects Section --- */
 .projects-grid {
